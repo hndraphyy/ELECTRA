@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/layouts/navbar/Navbar";
 
-const roboto = Roboto({
+const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-roboto",
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.variable}>
+      <body className={outfit.className}>
         <Navbar />
         {children}
       </body>
