@@ -99,7 +99,7 @@ const ModalLogin = ({
             />
             <button
               type="button"
-              className="absolute right-3 bottom-[7px] text-gray-400 hover:text-gray-700"
+              className="absolute right-1  p-[7px] bottom-0 text-gray-400 hover:text-gray-700"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FiEye /> : <FiEyeOff />}
