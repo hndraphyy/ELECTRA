@@ -12,10 +12,10 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "Electra",
-    template: "%s | Electra",
+    default: "Electra Best Electronik in the World",
+    template: "%s | Electra Best Electronik in the World",
   },
-  description: "E-commerce",
+  description: "E-commerce Electra Best Electronik in the World",
 };
 
 export default function RootLayout({

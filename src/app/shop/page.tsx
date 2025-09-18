@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import ShopPage from "@/components/features/home";
+import Shop from "@/components/features/home";
 
 export const metadata: Metadata = {
   title: "Shop",
 };
 
-export default function Home() {
-  return <ShopPage />;
+export default function ShopPage() {
+  return <Shop />;
 }

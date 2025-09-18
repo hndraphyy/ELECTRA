@@ -1,7 +1,7 @@
 "use clients";
 import HeroSection from "./sections/HeroSection";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <HeroSection />
