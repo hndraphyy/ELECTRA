@@ -56,7 +56,7 @@ const ModalLogin = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative">
+      <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative text-black">
         <Button
           variant="link"
           onClick={onClose}
@@ -79,12 +79,11 @@ const ModalLogin = ({
               placeholder="Enter your email or username"
               value={form.identifier}
               onChange={handleChange}
-              required
             />
-            {errors.identifier && (
-              <p className="text-red-500 text-sm">{errors.identifier}</p>
-            )}
           </div>
+          {errors.identifier && (
+            <p className="text-red-500 text-sm">{errors.identifier}</p>
+          )}
 
           <div className="relative">
             <AuthInput
@@ -95,7 +94,6 @@ const ModalLogin = ({
               placeholder="Enter your password"
               value={form.password}
               onChange={handleChange}
-              required
             />
             <button
               type="button"

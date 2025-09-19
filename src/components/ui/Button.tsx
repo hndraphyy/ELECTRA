@@ -21,7 +21,7 @@ export function Button({
   return (
     <button
       className={cn(
-        "px-4 py-1 font-medium text-[13px] md:text-base transition cursor-pointer",
+        "px-4 py-1 text-[13px] md:text-base transition cursor-pointer",
         variants[variant],
         className
       )}

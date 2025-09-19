@@ -67,7 +67,7 @@ const ModalRegister = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 text-black">
       <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative">
         <Button
           variant="link"

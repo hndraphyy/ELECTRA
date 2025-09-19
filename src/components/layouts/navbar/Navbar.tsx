@@ -19,7 +19,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className="w-full bg-white border-b-[.3px] border-gray-300 fixed top-0 left-0 z-50">
+    <header className="w-full bg-white border-b-[.3px] border-gray-300 fixed top-0 left-0 z-50 text-black">
       <div className="mx-auto w-full max-w-screen-xl py-3 md:py-3 px-3 md:px-7">
         {/* desktop */}
         <div className="flex justify-between items-center gap-4">
@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
 
         {/* mobile */}
-        <nav className="flex md:hidden items-center gap-5 md:gap-8 mr-3 md:mr-0 mt-3">
+        <nav className="flex md:hidden items-center gap-5 md:gap-8 mt-3">
           <SearchBar
             onSearch={(query) => {
               alert(query);
