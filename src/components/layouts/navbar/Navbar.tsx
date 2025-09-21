@@ -3,23 +3,23 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { menuItems } from "@/components/layouts/navbar/navLink";
+import { menuItems } from "@/lib/navLink";
 import { Button } from "@/components/ui/Button";
 import ModalLogin from "@/components/auth/ModalLogin";
 import ModalRegister from "@/components/auth/ModalRegister";
-import SearchBar from "@/components/search/SearchBar";
+import SearchBar from "@/components/ui/SearchBar";
 import UserDropDown from "@/components/auth/UserDropDown";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isRegisterOpen, setRegisterOpen] = useState(false);
-  const [user, setUser] = useState<{ name: string; email: string } | null>(
+  const [user, setUser] = useState<{ username: string; email: string } | null>(
     null
   );
 
   return (
-    <header className="w-full bg-white border-b-[.3px] border-gray-300 fixed top-0 left-0 z-50 text-black">
+    <header className="w-full bg-white border-b-[.3px] border-gray-400 md:border-gray-300 fixed top-0 left-0 z-50 text-black">
       <div className="mx-auto w-full max-w-screen-xl py-3 md:py-3 px-3 md:px-7">
         {/* desktop */}
         <div className="flex justify-between items-center gap-4">
@@ -51,7 +51,11 @@ const Navbar = () => {
 
             <div className="flex items-center gap-2 md:gap-3">
               {user ? (
-                <UserDropDown user={user} onLogout={() => setUser(null)} />
+                <UserDropDown
+                  onLogout={() => {
+                    setUser(null);
+                  }}
+                />
               ) : (
                 <>
                   <Button
@@ -81,7 +85,6 @@ const Navbar = () => {
               alert(query);
             }}
           />
-
           {menuItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -100,6 +103,7 @@ const Navbar = () => {
         </nav>
       </div>
 
+      {/* modal login */}
       <ModalLogin
         open={isLoginOpen}
         onClose={() => setLoginOpen(false)}
@@ -108,10 +112,12 @@ const Navbar = () => {
           setRegisterOpen(true);
         }}
         onLoginSuccess={(loggedInUser) => {
-          setUser(loggedInUser);
+          setUser(loggedInUser); // loggedInUser { username, email }
           setRegisterOpen(false);
         }}
       />
+
+      {/* modal register */}
       <ModalRegister
         open={isRegisterOpen}
         onClose={() => setRegisterOpen(false)}

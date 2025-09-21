@@ -1,8 +1,9 @@
+"use client";
+
 import { FiX, FiEye, FiEyeOff } from "react-icons/fi";
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { Button } from "@/components/ui/Button";
 import AuthInput from "./AuthInput";
-import { addUser } from "@/lib/localStorageUser";
 
 interface ModalRegisterProps {
   open: boolean;
@@ -10,65 +11,110 @@ interface ModalRegisterProps {
   onSwitchToLogin: () => void;
 }
 
-const ModalRegister = ({
-  open,
-  onClose,
-  onSwitchToLogin,
-}: ModalRegisterProps) => {
-  const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+const INITIAL_FORM = {
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
+const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) => {
+  const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  if (!open) return null;
+  useEffect(() => {
+    if (open) {
+      setForm(INITIAL_FORM);
+      setErrors({});
+      setShowPassword(false);
+      setShowConfirmPassword(false);
+      setIsLoading(false);
+    }
+  }, [open]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    setErrors((err) => ({ ...err, [name]: "" }));
+  };
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    if (!form.username) newErrors.username = "Username wajib diisi";
+    if (!form.email) newErrors.email = "Email wajib diisi";
+    if (!form.password) newErrors.password = "Password wajib diisi";
+    if (form.password.length < 6) newErrors.password = "Password minimal 6 karakter";
+    if (form.confirmPassword !== form.password)
+      newErrors.confirmPassword = "Password tidak cocok";
+    return newErrors;
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const newErrors: Record<string, string> = {};
+    setIsLoading(true);
 
-    if (!form.username) newErrors.username = "Username wajib diisi";
-    if (!form.email) newErrors.email = "Email wajib diisi";
-    if (!form.password) newErrors.password = "Password wajib diisi";
-    if (form.password.length < 6)
-      newErrors.password = "Password minimal 6 karakter";
-    if (form.confirmPassword !== form.password)
-      newErrors.confirmPassword = "Password tidak cocok";
-
+    const newErrors = validateForm();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      setIsLoading(false);
       return;
     }
 
-    const success = addUser({
-      username: form.username,
-      email: form.email,
-      password: form.password,
-    });
-    if (!success) {
-      setErrors({ email: "Username atau Email sudah terdaftar!" });
-      return;
-    }
+    // ✅ Dummy success (tidak benar-benar simpan user)
+    console.log("Register success (dummy):", form);
 
-    setForm({ username: "", email: "", password: "", confirmPassword: "" });
-    setErrors({});
-    alert("Register berhasil, silakan login!");
+    alert("Register berhasil (dummy), silakan login!");
     onSwitchToLogin();
     onClose();
+    setIsLoading(false);
   };
 
+  const renderInput = (
+    id: string,
+    label: string,
+    name: keyof typeof form,
+    type: string,
+    placeholder: string,
+    show?: boolean,
+    toggleShow?: () => void
+  ) => (
+    <div>
+      <div className="relative">
+        <AuthInput
+          id={id}
+          label={label}
+          name={name}
+          type={show ? "text" : type}
+          placeholder={placeholder}
+          value={form[name]}
+          onChange={handleChange}
+          required
+        />
+        {toggleShow && (
+          <button
+            type="button"
+            className="absolute right-1 p-[7px] bottom-0 text-gray-400 hover:text-gray-700"
+            onClick={toggleShow}
+            aria-label={show ? `Hide ${label}` : `Show ${label}`}
+          >
+            {show ? <FiEye /> : <FiEyeOff />}
+          </button>
+        )}
+      </div>
+      {errors[name] && <p className="text-red-500 text-sm">{errors[name]}</p>}
+    </div>
+  );
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 text-black">
-      <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative">
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity ${
+        open ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative text-black">
         <Button
           variant="link"
           onClick={onClose}
@@ -77,99 +123,39 @@ const ModalRegister = ({
           <FiX size={20} />
         </Button>
 
-        <h2 className="mb-6 text-lg font-semibold text-center">
-          Create account
-        </h2>
+        <h2 className="mb-6 text-lg font-semibold text-center">Create account</h2>
 
         <form className="space-y-3" onSubmit={handleSubmit}>
-          <AuthInput
-            id="register-username"
-            label="Username"
-            name="username"
-            type="text"
-            placeholder="Enter your username"
-            value={form.username}
-            onChange={handleChange}
-            required
-          />
-          {errors.username && (
-            <p className="text-red-500 text-sm">{errors.username}</p>
+          {renderInput("register-username", "Username", "username", "text", "Enter your username")}
+          {renderInput("register-email", "Email", "email", "email", "Enter your email")}
+          {renderInput(
+            "register-password",
+            "Password",
+            "password",
+            "password",
+            "Enter your password",
+            showPassword,
+            () => setShowPassword((s) => !s)
           )}
-
-          <AuthInput
-            id="register-email"
-            label="Email"
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email}</p>
-          )}
-
-          <div className="relative">
-            <AuthInput
-              id="register-password"
-              label="Password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-            <button
-              type="button"
-              className="absolute right-1  p-[7px] bottom-0 text-gray-400 hover:text-gray-700"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <FiEye /> : <FiEyeOff />}
-            </button>
-          </div>
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password}</p>
-          )}
-
-          <div className="relative">
-            <AuthInput
-              id="register-confirmPassword"
-              label="Confirm Password"
-              name="confirmPassword"
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Re-enter your password"
-              value={form.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-            <button
-              type="button"
-              className="absolute right-1  p-[7px] bottom-0 text-gray-400 hover:text-gray-700"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            >
-              {showConfirmPassword ? <FiEye /> : <FiEyeOff />}
-            </button>
-          </div>
-          {errors.confirmPassword && (
-            <p className="text-red-500 text-sm">{errors.confirmPassword}</p>
+          {renderInput(
+            "register-confirmPassword",
+            "Confirm Password",
+            "confirmPassword",
+            "password",
+            "Re-enter your password",
+            showConfirmPassword,
+            () => setShowConfirmPassword((s) => !s)
           )}
 
           <p className="text-sm text-center font-light pt-4">
             Already have an account?
-            <Button
-              type="button"
-              variant="link"
-              className="pl-1 underline"
-              onClick={onSwitchToLogin}
-            >
+            <Button type="button" variant="link" className="pl-1 underline" onClick={onSwitchToLogin}>
               Log In
             </Button>
           </p>
 
-          <Button type="submit" variant="auth" className="w-full rounded-md">
-            Sign Up
+          <Button type="submit" variant="auth" className="w-full rounded-md" disabled={isLoading}>
+            {isLoading ? "Registering..." : "Sign Up"}
           </Button>
         </form>
       </div>

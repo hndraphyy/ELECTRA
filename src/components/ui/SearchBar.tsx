@@ -8,7 +8,7 @@ interface SearchBarProps {
 
 const SearchBar = ({ placeholder = "Search...", onSearch }: SearchBarProps) => {
   const [query, setQuery] = useState("");
-  
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch?.(query);

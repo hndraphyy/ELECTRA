@@ -14,7 +14,7 @@ const SectionWrapper = forwardRef<HTMLElement, SectionWrapperProps>(
       <section
         id={id}
         ref={ref}
-        className={`py-10 sm:py-20 lg:py-24 ${className}`}
+        className={`py-10 pt-30 md:pt-0 sm:py-16 lg:py-20 ${className}`}
       >
         {children}
       </section>

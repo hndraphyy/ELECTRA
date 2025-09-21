@@ -1,6 +1,6 @@
 "use clients";
 
-const HeroSection = () => {
+const ProductsSection = () => {
   return (
     <section>
       <h1>Hallo</h1>
@@ -8,4 +8,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default ProductsSection;

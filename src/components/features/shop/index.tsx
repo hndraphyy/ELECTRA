@@ -1,5 +1,5 @@
 "use clients";
-import HeroSection from "./sections/HeroSection";
+import HeroSection from "./sections/ProductsSection";
 
 export default function Shop() {
   return (
