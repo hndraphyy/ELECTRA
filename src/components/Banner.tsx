@@ -25,13 +25,13 @@ const Banner = () => {
           }}
           loop
           spaceBetween={20}
-          className="w-full h-[150px] ssm:h-[215px] sm:h-[270px] md:h-[330px] lg:h-[370px]"
+          className="w-full h-[160px] ssm:h-[215px] sm:h-[270px] md:h-[330px] lg:h-[370px]"
         >
           {bannerData.map((banner) => (
             <SwiperSlide key={banner.id}>
               <Link
                 href={banner.href}
-                className="block relative w-full h-[128px] ssm:h-[190px] sm:h-[245px] md:h-[300px] lg:h-[340px]"
+                className="block relative w-full h-[140px] ssm:h-[190px] sm:h-[245px] md:h-[300px] lg:h-[340px]"
               >
                 <Image
                   src={banner.bannerImg}
