@@ -1,10 +1,15 @@
 "use clients";
 
+import SectionWrapper from "@/components/layouts/SectionWrapper";
+import Container from "@/components/layouts/Container";
+
 const ProductsSection = () => {
   return (
-    <section>
-      <h1>Hallo</h1>
-    </section>
+    <SectionWrapper>
+      <Container>
+        <h1>producst</h1>
+      </Container>
+    </SectionWrapper>
   );
 };
 

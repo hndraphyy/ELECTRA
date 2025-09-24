@@ -1,0 +1,28 @@
+.swiper-pagination {
+  margin-bottom: -10px;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: rgb(106, 105, 105);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  @media (min-width: 765px) {
+    width: 0.65rem;
+    height: 0.65rem;
+  }
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #79b40d;
+  width: 1.5rem;
+  height: 0.5rem;
+  border-radius: 0.65rem;
+  opacity: 1;
+  @media (min-width: 765px) {
+    width: 1.8rem;
+    height: 0.65rem;
+  }
+}
