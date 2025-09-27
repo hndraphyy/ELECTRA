@@ -20,10 +20,13 @@ const Navbar = () => {
 
   return (
     <header className="w-full bg-white border-b-[.3px] border-gray-400 md:border-gray-300 fixed top-0 left-0 z-50 text-black">
-      <div className="mx-auto w-full max-w-screen-xl py-3 md:py-3 px-3 md:px-7">
+      <div className="mx-auto w-full max-w-screen-xl big:max-w-screen-2xl py-3 big:py-5 px-3 md:px-7">
         {/* desktop */}
         <div className="flex justify-between items-center gap-4">
-          <Link href="/" className="text-3xl font-bold text-primary">
+          <Link
+            href="/"
+            className="text-3xl big:text-4xl font-bold text-primary"
+          >
             Electra
           </Link>
           <div className="flex items-end md:items-center flex-col md:flex-row gap-4 lg:gap-8">
@@ -39,7 +42,7 @@ const Navbar = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`hover:text-primary transition ${
+                    className={`hover:text-primary transition big:text-[20px] ${
                       isActive ? "text-primary font-semibold" : "text-gray-700"
                     }`}
                   >

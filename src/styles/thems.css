@@ -1,14 +1,9 @@
 @theme {
-  /* --color-primary: #94dd0f; */
+  /* color */
   --color-primary: #79b40d;
-  --color-hoverPrimary: #79b40d;
+  --color-hoverPrimary: #5d8a0b;
 
+  /* breakpoint */
   --breakpoint-ssm: 450px;
-}
-
-@media (min-width: 1800px) {
-  .big {
-    padding-left: 0rem !important;
-    padding-right: 0rem !important;
-  }
+  --breakpoint-big: 1900px;
 }

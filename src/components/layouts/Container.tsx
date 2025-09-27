@@ -12,10 +12,10 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>(
     return (
       <div
         ref={ref}
-        className={`mx-auto w-full max-w-screen-xl px-3 md:px-7 big ${className}`}
+        className={`pt-22 sm:pt-16 md:pt-5 lg:pt-5 mx-auto w-full max-w-screen-xl big:max-w-screen-2xl px-3 md:px-7 my-4 sm:my-6 lg:my-8 ${className}`}
         {...rest}
       >
-        {children}
+        <div className="big:my-6">{children}</div>
       </div>
     );
   }

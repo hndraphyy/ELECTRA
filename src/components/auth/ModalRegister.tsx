@@ -18,7 +18,11 @@ const INITIAL_FORM = {
   confirmPassword: "",
 };
 
-const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) => {
+const ModalRegister = ({
+  open,
+  onClose,
+  onSwitchToLogin,
+}: ModalRegisterProps) => {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +50,8 @@ const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) =
     if (!form.username) newErrors.username = "Username wajib diisi";
     if (!form.email) newErrors.email = "Email wajib diisi";
     if (!form.password) newErrors.password = "Password wajib diisi";
-    if (form.password.length < 6) newErrors.password = "Password minimal 6 karakter";
+    if (form.password.length < 6)
+      newErrors.password = "Password minimal 6 karakter";
     if (form.confirmPassword !== form.password)
       newErrors.confirmPassword = "Password tidak cocok";
     return newErrors;
@@ -96,7 +101,7 @@ const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) =
         {toggleShow && (
           <button
             type="button"
-            className="absolute right-1 p-[7px] bottom-0 text-gray-400 hover:text-gray-700"
+            className="absolute right-1 p-[7px] bottom-0 big:bottom-1 text-gray-400 hover:text-gray-700"
             onClick={toggleShow}
             aria-label={show ? `Hide ${label}` : `Show ${label}`}
           >
@@ -114,7 +119,7 @@ const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) =
         open ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative text-black">
+      <div className="w-77 md:w-96 xl:w-100 rounded-lg bg-white p-6 big:p-8 shadow-lg relative text-black">
         <Button
           variant="link"
           onClick={onClose}
@@ -123,11 +128,25 @@ const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) =
           <FiX size={20} />
         </Button>
 
-        <h2 className="mb-6 text-lg font-semibold text-center">Create account</h2>
+        <h2 className="mb-6 text-lg big:text-2xl font-semibold text-center">
+          Create account
+        </h2>
 
-        <form className="space-y-3" onSubmit={handleSubmit}>
-          {renderInput("register-username", "Username", "username", "text", "Enter your username")}
-          {renderInput("register-email", "Email", "email", "email", "Enter your email")}
+        <form className="space-y-3 big:space-y-4" onSubmit={handleSubmit}>
+          {renderInput(
+            "register-username",
+            "Username",
+            "username",
+            "text",
+            "Enter your username"
+          )}
+          {renderInput(
+            "register-email",
+            "Email",
+            "email",
+            "email",
+            "Enter your email"
+          )}
           {renderInput(
             "register-password",
             "Password",
@@ -147,14 +166,24 @@ const ModalRegister = ({ open, onClose, onSwitchToLogin }: ModalRegisterProps) =
             () => setShowConfirmPassword((s) => !s)
           )}
 
-          <p className="text-sm text-center font-light pt-4">
+          <p className="text-sm big:text-[19px] text-center font-light pt-4">
             Already have an account?
-            <Button type="button" variant="link" className="pl-1 underline" onClick={onSwitchToLogin}>
+            <Button
+              type="button"
+              variant="link"
+              className="pl-1 underline"
+              onClick={onSwitchToLogin}
+            >
               Log In
             </Button>
           </p>
 
-          <Button type="submit" variant="auth" className="w-full rounded-md" disabled={isLoading}>
+          <Button
+            type="submit"
+            variant="auth"
+            className="w-full rounded-md"
+            disabled={isLoading}
+          >
             {isLoading ? "Registering..." : "Sign Up"}
           </Button>
         </form>

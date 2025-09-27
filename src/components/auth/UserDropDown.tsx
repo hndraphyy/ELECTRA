@@ -50,11 +50,13 @@ const UserDropdown = ({ onLogout }: { onLogout: () => void }) => {
             className="object-cover"
           />
         </div>
-        <span className="text-sm font-medium">{user.username}</span>
+        <span className="text-sm big:text-[18px] font-medium">
+          {user.username}
+        </span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 p-2 w-40 md:w-48 bg-white shadow-lg rounded-md border border-gray-400 flex flex-col gap-1 z-50">
+        <div className="absolute right-0 mt-2 p-2 w-40 md:w-48 xl:w-60 bg-white shadow-lg rounded-md border border-gray-400 flex flex-col gap-1 z-50">
           <Link
             href="/account/info"
             onClick={() => setOpen(false)}

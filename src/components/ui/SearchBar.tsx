@@ -21,7 +21,7 @@ const SearchBar = ({ placeholder = "Search...", onSearch }: SearchBarProps) => {
           width={17}
           height={17}
           alt="icon-search"
-          className="absolute top-[7px] md:top-[9px] left-[9px] md:left-[12px]"
+          className="absolute top-[7px] md:top-[9px] left-[9px] md:left-[12px] big:w-[20px]"
         />
       </label>
       <input
@@ -31,7 +31,7 @@ const SearchBar = ({ placeholder = "Search...", onSearch }: SearchBarProps) => {
         placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full border-[1px] text-gray-500 border-gray-400 px-3 py-[2px] md:py-1 pl-8 md:pl-10 rounded-sm outline-0 text-md"
+        className="w-full border-[1px] text-gray-500 border-gray-400 px-3 py-[2px] md:py-1 pl-8 big:pl-9 md:pl-10 rounded-sm outline-0 text-md big:text-[19px]"
       />
     </form>
   );

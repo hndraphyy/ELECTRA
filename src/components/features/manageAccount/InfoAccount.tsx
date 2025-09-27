@@ -8,7 +8,7 @@ export default function Account() {
     <div className="w-full p-5 md:p-10 border-t md:border-t-0 border-t-gray-300">
       <div className="space-y-4">
         <div>
-          <div className="relative w-20 h-20 mt-2 group">
+          <div className="relative w-20 h-20 big:w-25 big:h-25 mt-2 group">
             <Image
               src="/assets/images/profileAvatar.webp"
               alt="avatar"
@@ -19,14 +19,14 @@ export default function Account() {
         </div>
 
         <div>
-          <p className="text-gray-500 text-sm">Username</p>
+          <p className="text-gray-500 text-sm big:text-lg">Username</p>
 
-          <p className="font-light">hendra</p>
+          <p className="font-light xl:text-xl">hendra</p>
         </div>
 
         <div>
-          <p className="text-gray-500 text-sm">Email</p>
-          <p className="font-light">hendra@example.com</p>
+          <p className="text-gray-500 text-sm big:text-lg">Email</p>
+          <p className="font-light xl:text-xl">hendra@example.com</p>
         </div>
         <div className="flex gap-3">
           <Button variant="out" className="text-white">

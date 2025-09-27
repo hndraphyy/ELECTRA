@@ -14,7 +14,12 @@ interface ModalLoginProps {
 
 const INITIAL_FORM = { identifier: "", password: "" };
 
-const ModalLogin = ({ open, onClose, onSwitchToRegister, onLoginSuccess }: ModalLoginProps) => {
+const ModalLogin = ({
+  open,
+  onClose,
+  onSwitchToRegister,
+  onLoginSuccess,
+}: ModalLoginProps) => {
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +45,8 @@ const ModalLogin = ({ open, onClose, onSwitchToRegister, onLoginSuccess }: Modal
     setIsLoading(true);
 
     const newErrors: Record<string, string> = {};
-    if (!form.identifier) newErrors.identifier = "Email atau Username wajib diisi";
+    if (!form.identifier)
+      newErrors.identifier = "Email atau Username wajib diisi";
     if (!form.password) newErrors.password = "Password wajib diisi";
 
     if (Object.keys(newErrors).length > 0) {
@@ -50,7 +56,10 @@ const ModalLogin = ({ open, onClose, onSwitchToRegister, onLoginSuccess }: Modal
     }
 
     console.log("User login with:", form);
-    onLoginSuccess({ username: form.identifier, email: form.identifier + "@mail.com" });
+    onLoginSuccess({
+      username: form.identifier,
+      email: form.identifier + "@mail.com",
+    });
 
     onClose();
     setIsLoading(false);
@@ -80,7 +89,7 @@ const ModalLogin = ({ open, onClose, onSwitchToRegister, onLoginSuccess }: Modal
         {toggleShow && (
           <button
             type="button"
-            className="absolute right-1 p-[7px] bottom-0 text-gray-400 hover:text-gray-700"
+            className="absolute right-1 p-[7px] bottom-0 big:bottom-1 text-gray-400 hover:text-gray-700"
             onClick={toggleShow}
           >
             {show ? <FiEye /> : <FiEyeOff />}
@@ -97,27 +106,55 @@ const ModalLogin = ({ open, onClose, onSwitchToRegister, onLoginSuccess }: Modal
         open ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="w-77 md:w-96 rounded-lg bg-white p-6 shadow-lg relative text-black">
-        <Button variant="link" onClick={onClose} className="absolute right-0 top-3 text-gray-500 hover:text-gray-800">
+      <div className="w-77 md:w-96 xl:w-100 rounded-lg bg-white p-6 big:p-8 shadow-lg relative text-black">
+        <Button
+          variant="link"
+          onClick={onClose}
+          className="absolute right-0 top-3 text-gray-500 hover:text-gray-800"
+        >
           <FiX size={20} />
         </Button>
 
-        <h2 className="mb-6 text-lg font-semibold text-center">Log in</h2>
+        <h2 className="mb-6 text-lg big:text-2xl font-semibold text-center">
+          Log in
+        </h2>
 
-        <form className="space-y-3" onSubmit={handleSubmit}>
-          {renderInput("login-identifier", "Email or Username", "identifier", "text", "Enter your email or username")}
-          {renderInput("login-password", "Password", "password", "password", "Enter your password", showPassword, () =>
-            setShowPassword((s) => !s)
+        <form className="space-y-3 big:space-y-4" onSubmit={handleSubmit}>
+          {renderInput(
+            "login-identifier",
+            "Email or Username",
+            "identifier",
+            "text",
+            "Enter your email or username"
+          )}
+          {renderInput(
+            "login-password",
+            "Password",
+            "password",
+            "password",
+            "Enter your password",
+            showPassword,
+            () => setShowPassword((s) => !s)
           )}
 
-          <p className="text-sm text-center font-light pt-4">
+          <p className="text-sm big:text-[19px] text-center font-light pt-4">
             Don&apos;t have an account?
-            <Button type="button" variant="link" className="pl-1 underline" onClick={onSwitchToRegister}>
+            <Button
+              type="button"
+              variant="link"
+              className="pl-1 underline"
+              onClick={onSwitchToRegister}
+            >
               Sign Up
             </Button>
           </p>
 
-          <Button type="submit" variant="auth" className="w-full rounded-md" disabled={isLoading}>
+          <Button
+            type="submit"
+            variant="auth"
+            className="w-full rounded-md"
+            disabled={isLoading}
+          >
             {isLoading ? "Logging in..." : "Log In"}
           </Button>
         </form>

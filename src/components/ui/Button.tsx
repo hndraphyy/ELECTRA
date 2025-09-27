@@ -28,7 +28,7 @@ export function Button({
       )}
       {...props}
     >
-      {children}
+      <span className="big:text-[20px]">{children}</span>
     </button>
   );
 }

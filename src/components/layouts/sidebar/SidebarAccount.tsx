@@ -17,7 +17,7 @@ const SidebarAccount = () => {
               key={item.href}
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              className={`transition px-3 py-2 rounded-sm text-sm md:text-md ${
+              className={`transition px-3 py-2 rounded-sm text-sm big:text-lg md:text-md ${
                 isActive
                   ? "text-white font-semibold bg-primary"
                   : "text-gray-700 hover:bg-gray-200"

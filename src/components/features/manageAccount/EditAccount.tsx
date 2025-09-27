@@ -41,7 +41,7 @@ export default function EditAccount() {
         {/* Avatar */}
         <div>
           <div
-            className="relative w-20 h-20 mt-2 group"
+            className="relative w-20 h-20 big:w-25 big:h-25 mt-2 group"
             onClick={() => fileInputRef.current?.click()}
           >
             <Image
@@ -65,51 +65,51 @@ export default function EditAccount() {
 
         {/* Username */}
         <div>
-          <p className="text-gray-500 text-sm">Username</p>
+          <p className="text-gray-500 text-sm big:text-xl">Username</p>
           <input
             type="text"
             value={form.username}
             onChange={(e) => setForm({ ...form, username: e.target.value })}
-            className="mt-1 w-full border border-gray-400 rounded px-2 py-1 text-sm outline-0"
+            className="mt-1 big:mt-2 w-full border border-gray-400 rounded px-2 big:px-3 py-1 text-sm big:text-xl outline-0"
           />
         </div>
 
         {/* Email */}
         <div>
-          <p className="text-gray-500 text-sm">Email</p>
-          <p className="font-light">{form.email}</p>
+          <p className="text-gray-500 text-sm big:text-xl">Email</p>
+          <p className="font-light xl:text-xl">{form.email}</p>
         </div>
 
         {/* Password change */}
         <div>
-          <p className="text-gray-500 text-sm">Old Password</p>
+          <p className="text-gray-500 text-sm big:text-xl">Old Password</p>
           <input
             type="password"
             value={form.oldPassword}
             onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
-            className="mt-1 w-full border border-gray-400 rounded px-2 py-1 text-sm outline-0"
+            className="mt-1 big:mt-2 w-full border border-gray-400 rounded px-2 big:px-3 py-1 text-sm big:text-xl outline-0"
             placeholder="Enter new password"
           />
         </div>
         <div>
-          <p className="text-gray-500 text-sm">New Password</p>
+          <p className="text-gray-500 text-sm big:text-xl">New Password</p>
           <input
             type="password"
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
-            className="mt-1 w-full border border-gray-400 rounded px-2 py-1 text-sm outline-0"
+            className="mt-1 big:mt-2 w-full border border-gray-400 rounded px-2 big:px-3 py-1 text-sm big:text-xl outline-0"
             placeholder="Enter new password"
           />
         </div>
         <div>
-          <p className="text-gray-500 text-sm">Confirm Password</p>
+          <p className="text-gray-500 text-sm big:text-xl">Confirm Password</p>
           <input
             type="password"
             value={form.confirmPassword}
             onChange={(e) =>
               setForm({ ...form, confirmPassword: e.target.value })
             }
-            className="mt-1 w-full border border-gray-400 rounded px-2 py-1 text-sm outline-0"
+            className="mt-1 big:mt-2 w-full border border-gray-400 rounded px-2 big:px-3 py-1 text-sm big:text-xl outline-0"
             placeholder="Confirm new password"
           />
         </div>
