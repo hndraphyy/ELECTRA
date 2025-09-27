@@ -10,61 +10,54 @@ interface ProductCardProps {
   showDiscountBadge?: boolean;
 }
 
-const ProductCard = ({
-  product,
-  showDiscountBadge = true,
-}: ProductCardProps) => {
-  const discount = product.discount ?? 0;
-  const finalPrice =
-    discount > 0
-      ? product.price - product.price * (discount / 100)
-      : product.price;
+const ProductCard = ({ product }: ProductCardProps) => {
+  const { href, productImg, alt, title, desc, price, discount, rate } = product;
+
+  const discountValue = Number(discount) || 0;
+  const hasDiscount = discountValue > 0;
+  const finalPrice = hasDiscount
+    ? price - price * (discountValue / 100)
+    : price;
 
   return (
     <Link
-      href={product.href}
-      className="rounded-md md:rounded-xl relative group"
+      href={href}
+      aria-label={`View product ${title}`}
+      className="group block rounded-md md:rounded-xl"
     >
-      <div className="block mb-2 relative w-full bg-gray-200 rounded-md md:rounded-xl h-[130px] ssm:h-[190px] sm:h-[245px] md:h-[250px] lg:h-[230px] xl:h-[230px] overflow-hidden">
+      <div className="relative mb-2 h-[130px] ssm:h-[190px] sm:h-[245px] md:h-[250px] lg:h-[230px] xl:h-[230px] w-full overflow-hidden rounded-md md:rounded-xl bg-gray-200">
         <Image
-          src={product.productImg}
-          alt={product.alt}
+          src={productImg}
+          alt={alt || title}
           fill
-          className="w-full h-full object-cover rounded-md md:rounded-xl transition-transform duration-300 group-hover:scale-105"
           priority
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
-      </div>
-
-      <h2 className="text-sm md:text-base font-medium line-clamp-1">
-        {product.title}
-      </h2>
-      <p className="text-xs md:text-sm font-light leading-tight line-clamp-2">
-        {product.desc}
-      </p>
-
-      <div className="mt-1">
-        {discount > 0 ? (
-          <>
-            <p className="text-xs md:text-sm text-gray-500 line-through">
-              {formatPrice(product.price)}
-            </p>
-            {showDiscountBadge && (
-              <span className="text-xs md:text-sm font-medium text-red-500 absolute top-1 right-1 px-2 py-1 bg-white rounded-xl">
-                -{discount}%
-              </span>
-            )}
-            <p className="text-sm md:text-lg font-semibold text-primary">
-              {formatPrice(finalPrice)}
-            </p>
-          </>
-        ) : (
-          <p className="text-sm md:text-lg font-semibold text-primary">
-            {formatPrice(product.price)}
-          </p>
+        {hasDiscount && (
+          <span className="absolute right-1 top-1 z-10 rounded-xl bg-white px-2 py-1 text-xs font-medium text-red-500 shadow-md md:text-sm">
+            -{discountValue}%
+          </span>
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-600">⭐ {product.rate}</p>
+      <h2 className="line-clamp-1 text-sm font-medium md:text-base">{title}</h2>
+      <p className="line-clamp-2 text-xs font-light leading-tight md:text-sm">
+        {desc}
+      </p>
+
+      <div className="mt-1">
+        {hasDiscount && (
+          <p className="text-xs text-gray-500 line-through md:text-sm">
+            {formatPrice(price)}
+          </p>
+        )}
+        <p className="text-sm font-semibold text-primary md:text-lg">
+          {formatPrice(finalPrice)}
+        </p>
+      </div>
+
+      <p className="text-xs text-gray-600 md:text-sm">⭐ {rate}</p>
     </Link>
   );
 };

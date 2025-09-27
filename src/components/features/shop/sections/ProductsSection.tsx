@@ -1,4 +1,4 @@
-"use clients";
+"use client";
 
 import { productsData } from "@/utils";
 import SectionWrapper from "@/components/layouts/SectionWrapper";
