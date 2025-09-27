@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { menuSidebarAccount } from "@/lib/navLink";
+import { menuSidebarAccount } from "@/config/navLink";
 
 const SidebarAccount = () => {
   const pathname = usePathname();

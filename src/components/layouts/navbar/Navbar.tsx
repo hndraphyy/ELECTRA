@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { menuItems } from "@/lib/navLink";
+import { menuItems } from "@/config/navLink";
 import { Button } from "@/components/ui/Button";
 import ModalLogin from "@/components/auth/ModalLogin";
 import ModalRegister from "@/components/auth/ModalRegister";

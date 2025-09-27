@@ -15,7 +15,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 2,
-    productImg: "/assets/images/products/iphone.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "iPhone 15",
     title: "iPhone 15 Pro Max",
     desc: "Smartphone flagship dengan kamera pro",
@@ -26,7 +26,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 3,
-    productImg: "/assets/images/products/ipad.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "iPad Pro",
     title: "iPad Pro M2",
     desc: "Tablet powerful untuk desain & editing",
@@ -36,7 +36,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 4,
-    productImg: "/assets/images/products/airpods.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "AirPods",
     title: "AirPods Pro 2",
     desc: "Earbuds wireless dengan noise cancelling",
@@ -47,7 +47,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 5,
-    productImg: "/assets/images/products/applewatch.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Smartwatch",
     title: "Apple Watch Series 9",
     desc: "Smartwatch untuk kesehatan & olahraga",
@@ -57,7 +57,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 6,
-    productImg: "/assets/images/products/monitor.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Monitor",
     title: "LG UltraWide 34”",
     desc: "Monitor ultrawide untuk multitasking",
@@ -68,7 +68,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 7,
-    productImg: "/assets/images/products/tv.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Smart TV",
     title: "Samsung QLED 55”",
     desc: "Smart TV 4K dengan HDR",
@@ -78,7 +78,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 8,
-    productImg: "/assets/images/products/speaker.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Speaker",
     title: "Sony Bluetooth Speaker",
     desc: "Speaker portable dengan bass kuat",
@@ -89,7 +89,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 9,
-    productImg: "/assets/images/products/laptop.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Gaming Laptop",
     title: "ASUS ROG Strix G16",
     desc: "Laptop gaming dengan RTX 4060",
@@ -100,7 +100,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 10,
-    productImg: "/assets/images/products/headset.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Headset",
     title: "Logitech G Pro X",
     desc: "Headset gaming dengan mic noise cancelling",
@@ -111,7 +111,7 @@ export const productsData: ProductItem[] = [
   // Tambahan biar jadi 20
   {
     id: 11,
-    productImg: "/assets/images/products/camera.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Camera",
     title: "Canon EOS R10",
     desc: "Kamera mirrorless dengan kualitas tinggi",
@@ -121,7 +121,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 12,
-    productImg: "/assets/images/products/router.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Router",
     title: "TP-Link Archer AX73",
     desc: "Wi-Fi 6 router dengan kecepatan tinggi",
@@ -132,7 +132,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 13,
-    productImg: "/assets/images/products/printer.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Printer",
     title: "Epson EcoTank L3250",
     desc: "Printer hemat tinta untuk kebutuhan kantor",
@@ -142,7 +142,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 14,
-    productImg: "/assets/images/products/console.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Console",
     title: "PlayStation 5",
     desc: "Konsol gaming next-gen dengan grafis 4K",
@@ -152,7 +152,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 15,
-    productImg: "/assets/images/products/drone.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Drone",
     title: "DJI Mini 3 Pro",
     desc: "Drone ringan dengan kamera 4K",
@@ -162,7 +162,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 16,
-    productImg: "/assets/images/products/projector.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Projector",
     title: "Xiaomi Mi Smart Projector 2",
     desc: "Proyektor portable dengan Android TV",
@@ -173,7 +173,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 17,
-    productImg: "/assets/images/products/keyboard.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Keyboard",
     title: "Keychron K6 Wireless",
     desc: "Keyboard mekanikal wireless compact",
@@ -183,7 +183,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 18,
-    productImg: "/assets/images/products/mouse.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Mouse",
     title: "Razer DeathAdder V2",
     desc: "Mouse gaming dengan sensor presisi",
@@ -193,7 +193,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 19,
-    productImg: "/assets/images/products/smart-home.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Smart Home",
     title: "Google Nest Hub",
     desc: "Smart display untuk rumah pintar",
@@ -203,7 +203,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 20,
-    productImg: "/assets/images/products/harddisk.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Harddisk",
     title: "Seagate Expansion 2TB",
     desc: "Harddisk eksternal portable",
@@ -238,7 +238,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 3,
-    productImg: "/assets/images/products/iphone.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "iPhone",
     title: "iPhone 15 Pro Max",
     desc: "Smartphone flagship dengan kamera pro",
@@ -249,7 +249,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 4,
-    productImg: "/assets/images/products/ipad.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "iPad Pro",
     title: "iPad Pro M2",
     desc: "Tablet powerful untuk desain & editing",
@@ -259,7 +259,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 5,
-    productImg: "/assets/images/products/airpods.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "AirPods",
     title: "AirPods Pro 2",
     desc: "Earbuds wireless dengan noise cancelling",
@@ -269,7 +269,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 6,
-    productImg: "/assets/images/products/applewatch.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Apple Watch",
     title: "Apple Watch Series 9",
     desc: "Smartwatch untuk kesehatan & olahraga",
@@ -279,7 +279,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 7,
-    productImg: "/assets/images/products/rog.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "ASUS ROG",
     title: "ASUS ROG Strix G16",
     desc: "Laptop gaming dengan RTX 4060",
@@ -290,7 +290,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 8,
-    productImg: "/assets/images/products/tv.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Samsung TV",
     title: "Samsung QLED 55”",
     desc: "Smart TV 4K dengan HDR",
@@ -300,7 +300,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 9,
-    productImg: "/assets/images/products/speaker.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "Sony Speaker",
     title: "Sony Bluetooth Speaker",
     desc: "Speaker portable dengan bass kuat",
@@ -311,7 +311,7 @@ export const productsPopular: ProductItem[] = [
   },
   {
     id: 10,
-    productImg: "/assets/images/products/console.webp",
+    productImg: "/assets/images/products/macbook.webp",
     alt: "PlayStation",
     title: "PlayStation 5",
     desc: "Konsol gaming next-gen dengan grafis 4K",
