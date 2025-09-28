@@ -11,7 +11,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { href, productImg, alt, title, desc, price, discount, rate } = product;
+  const { productImg, alt, title, desc, price, discount, rate, slug } = product;
 
   const discountValue = Number(discount) || 0;
   const hasDiscount = discountValue > 0;
@@ -21,7 +21,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link
-      href={href}
+      href={`/products/${slug}`}
       aria-label={`View product ${title}`}
       className="group block rounded-md md:rounded-xl"
     >
