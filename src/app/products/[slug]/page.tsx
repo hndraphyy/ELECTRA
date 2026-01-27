@@ -1,23 +1,23 @@
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import { getProducts } from "@/services/productService";
 import ProductDetail from "@/components/features/ProductDetail";
 
-interface Props {
-  params: { slug: string };
-}
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-export default async function ProductPage({ params }: Props) {
-  const allProducts = await getProducts();
+  const data = await getProducts();
 
-  const product = allProducts.find(
-    (p: any) =>
-      p.id.toString() === params.slug ||
-      p.name.toLowerCase().replace(/ /g, "-") === params.slug,
-  );
+  const product = data.find((item: any) => {
+    const itemSlug = item.name.toLowerCase().replace(/ /g, "-");
+    return itemSlug === slug;
+  });
 
   if (!product) {
-    notFound();
+    return notFound();
   }
 
   const mappedProduct = {
@@ -25,16 +25,10 @@ export default async function ProductPage({ params }: Props) {
     title: product.name,
     productImg: product.image_url,
     desc: product.description,
+    alt: product.name,
     rate: 4.5,
-    images: [product.image_url],
+    slug: slug,
   };
 
   return <ProductDetail product={mappedProduct} />;
-}
-
-export async function generateStaticParams() {
-  const products = await getProducts();
-  return products.map((product: any) => ({
-    slug: product.id.toString(),
-  }));
 }
