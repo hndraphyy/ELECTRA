@@ -1,34 +1,40 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { productsData } from "@/utils";
+import { getProducts } from "@/services/productService";
 import ProductDetail from "@/components/features/ProductDetail";
 
-export function generateStaticParams() {
-  return productsData.map((p) => ({ slug: p.slug }));
+interface Props {
+  params: { slug: string };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug);
-  if (!product) return { title: "Not Found" };
-  return {
-    title: product.title,
+export default async function ProductPage({ params }: Props) {
+  const allProducts = await getProducts();
+
+  const product = allProducts.find(
+    (p: any) =>
+      p.id.toString() === params.slug ||
+      p.name.toLowerCase().replace(/ /g, "-") === params.slug,
+  );
+
+  if (!product) {
+    notFound();
+  }
+
+  const mappedProduct = {
+    ...product,
+    title: product.name,
+    productImg: product.image_url,
+    desc: product.description,
+    rate: 4.5,
+    images: [product.image_url],
   };
+
+  return <ProductDetail product={mappedProduct} />;
 }
 
-export default async function ProjectDetail({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug);
-
-  if (!product) return notFound();
-
-  return <ProductDetail product={product} />;
+export async function generateStaticParams() {
+  const products = await getProducts();
+  return products.map((product: any) => ({
+    slug: product.id.toString(),
+  }));
 }
