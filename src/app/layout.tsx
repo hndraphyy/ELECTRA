@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "@/styles/globals.css";
 
 import Navbar from "@/components/layouts/navbar/Navbar";
+import Footer from "@/components/layouts/Footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className={outfit.className} suppressHydrationWarning>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
