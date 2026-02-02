@@ -45,7 +45,7 @@ const ProductsSection = () => {
 
   return (
     <SectionWrapper>
-      <Container>
+      <Container className="h-dvh">
         <div className="flex items-center justify-between mb-5 md:mb-9">
           <h1 className="text-xl md:text-3xl font-medium text-primary">
             Popular Products

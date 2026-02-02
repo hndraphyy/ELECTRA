@@ -45,7 +45,7 @@ const ProductsSection = () => {
 
   return (
     <SectionWrapper>
-      <Container>
+      <Container className="h-dvh">
         <h1 className="text-xl md:text-3xl mb-5 md:mb-9 font-medium text-primary">
           All Products
         </h1>

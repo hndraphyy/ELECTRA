@@ -18,7 +18,7 @@ const Container = forwardRef<HTMLDivElement, ContainerProps>(
         <div className="big:my-6">{children}</div>
       </div>
     );
-  }
+  },
 );
 
 Container.displayName = "Container";
